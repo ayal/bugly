@@ -7,9 +7,11 @@
 </body>
 
 <template name="arr">
-  {{#each all}}
+  {{#with obj}}
+  {{#each this.arr}}
   <div class="arr">
     {{this.val}}
   </div>
   {{/each}}
+  {{/with}}
 </template>

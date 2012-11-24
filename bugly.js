@@ -29,18 +29,13 @@ if (Meteor.isClient) {
     });
   });
 
-  Template.arr.all = function () {
-    var theone = theobjects.findOne({key: 'thekey'});
-    if (!theone) {
-      return [];
-    }
-    return theone.arr;
+  Template.arr.obj = function () {
+    return theobjects.findOne({key: 'thekey'}) || {arr: []};
   };
 
-
   Template.arr.events = {
-    'click .arr': function(e) {
-      console.log('this', this);
+    'click .arr': function(e,te) {
+      console.log('this', this, te, te.data);
       var theone = theobjects.findOne({key: 'thekey'});
       var that = this;
       theone.arr = $.map(theone.arr, function(v){
